@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍰 Waffle House</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <span>🍰</span> Waffle House
+        </div>
+        <div class="nav-links">
+            <a href="#" onclick="showPage('home')" class="active">Home</a>
+            <a href="#" onclick="showPage('menu')">Menu</a>
+            <a href="#" onclick="showPage('facilities')">Facilities</a>
+            <a href="#" onclick="showPage('about')">About</a>
+        </div>
+        <div class="cart-icon" onclick="showCart()">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">0</span>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <section id="home" class="page active">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Best Waffles in Town! 🧇</h1>
+                <p>Fresh, delicious, and made with love</p>
+                <button onclick="showPage('menu')" class="btn-primary">Order Now</button>
+            </div>
+        </div>
+        <div class="features">
+            <div class="feature-box">
+                <i class="fas fa-clock"></i>
+                <h3>Fast Service</h3>
+                <p>Get your waffles in minutes</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-star"></i>
+                <h3>Premium Quality</h3>
+                <p>Best ingredients only</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-heart"></i>
+                <h3>Fresh Daily</h3>
+                <p>Made fresh every day</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Page -->
+    <section id="menu" class="page">
+        <div class="page-header">
+            <h2>🍰 Our Menu</h2>
+            <p>Choose your favorite waffles</p>
+        </div>
+        <div class="menu-grid" id="menuGrid">
+            <!-- Menu items will be added by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Facilities Page -->
+    <section id="facilities" class="page">
+        <div class="page-header">
+            <h2>🏪 Our Facilities</h2>
+            <p>Everything you need for a great experience</p>
+        </div>
+        <div class="facilities-grid">
+            <div class="facility-card">
+                <i class="fas fa-utensils"></i>
+                <h3>Open Kitchen</h3>
+                <p>Watch chefs prepare your food</p>
+            </div>
+            <div class="facility-card">
+                <i class="fas fa-chair"></i>
+                <h3>Seating Area</h3>
+                <p>Comfortable seating for families</p>
+            </div>
+            <div class="facility-card">
+                <i class="fas fa-wifi"></i>
+                <h3>Free WiFi</h3>
+                <p>High-speed internet</p>
+            </div>
+            <div class="facility-card">
+                <i class="fas fa-parking"></i>
+                <h3>Parking</h3>
+                <p>Free parking for customers</p>
+            </div>
+            <div class="facility-card">
+                <i class="fas fa-birthday-cake"></i>
+                <h3>Party Hall</h3>
+                <p>Book for events & parties</p>
+            </div>
+            <div class="facility-card">
+                <i class="fas fa-motorcycle"></i>
+                <h3>Delivery</h3>
+                <p>Fast home delivery</p>
+            </div>
+            <div class="facility-card">
+                <i class="fas fa-credit-card"></i>
+                <h3>Online Payment</h3>
+                <p>All cards & UPI accepted</p>
+            </div>
+            <div class="facility-card">
+                <i class="fas fa-phone"></i>
+                <h3>Call Order</h3>
+                <p>Order by phone</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Page -->
+    <section id="about" class="page">
+        <div class="page-header">
+            <h2>ℹ️ About Us</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Welcome to Waffle House!</h3>
+                <p>Since 2010, we've been serving the best waffles in town. 
+                   Our secret recipe and premium ingredients make our waffles 
+                   unique and delicious.</p>
+                <p>We believe in quality, freshness, and customer satisfaction.
+                   Visit us today and taste the difference!</p>
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker"></i> 123 Waffle Street, Food City</p>
+                    <p><i class="fas fa-phone"></i> +1 234-567-8900</p>
+                    <p><i class="fas fa-envelope"></i> info@wafflehouse.com</p>
+                    <p><i class="fas fa-clock"></i> Open: 7 AM - 10 PM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2>🛒 Your Cart</h2>
+                <span class="close-cart" onclick="closeCart()">&times;</span>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <p class="empty-cart">Your cart is empty!</p>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span class="total-price">$0.00</span>
+                </div>
+                <button class="btn-checkout" onclick="checkout()">Place Order</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Success Modal -->
+    <div class="success-modal" id="successModal">
+        <div class="success-content">
+            <i class="fas fa-check-circle"></i>
+            <h2>Order Placed! 🎉</h2>
+            <p>Thank you for your order</p>
+            <button onclick="closeSuccess()">OK</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 Waffle House | All Rights Reserved 🍰</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
